@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: oklch(0.975 0.008 95);
-  --color-foreground: oklch(0.25 0.05 255);
+  --color-background: oklch(0.22 0.05 150);
+  --color-foreground: oklch(0.98 0.01 120);
   --color-card: oklch(1 0 0);
   --color-card-foreground: oklch(0.25 0.05 255);
   --color-popover: oklch(1 0 0);
@@ -20,12 +20,13 @@
   --color-border: oklch(0.9 0.015 95);
   --color-input: oklch(0.9 0.015 95);
   --color-ring: oklch(0.42 0.12 255);
-  --color-gold: oklch(0.78 0.15 88);
-  --color-gold-foreground: oklch(0.28 0.05 80);
+  --color-gold: oklch(0.86 0.17 125);
+  --color-gold-foreground: oklch(0.2 0.06 150);
   --color-navy: oklch(0.3 0.08 258);
   --color-navy-foreground: oklch(0.97 0.01 95);
   --radius: 0.75rem;
-  --font-display: "Archivo", sans-serif;
+  --color-overlay: oklch(0.18 0.06 150 / 0.55);
+  --font-display: "Bungee", "Archivo", sans-serif;
   --font-body: "Inter", sans-serif;
 }
 
@@ -51,3 +52,13 @@ body {
 .top4-glow {
   animation: pulse-gold 2s infinite;
 }
+
+.bg-overlay { background: linear-gradient(180deg, oklch(0.14 0.05 150 / 0.72), oklch(0.15 0.06 150 / 0.78)); }
+.glass { background: oklch(0.2 0.05 150 / 0.55); backdrop-filter: blur(10px); border: 1px solid oklch(1 0 0 / 0.15); }
+.striped-title {
+  color: var(--color-foreground);
+  -webkit-mask-image: repeating-linear-gradient(180deg, #000 0 5px, transparent 5px 8px);
+  mask-image: repeating-linear-gradient(180deg, #000 0 5px, transparent 5px 8px);
+  letter-spacing: 0.04em;
+}
+.live-dot { width: 8px; height: 8px; border-radius: 9999px; background: var(--color-gold); animation: pulse-gold 1.5s infinite; }
