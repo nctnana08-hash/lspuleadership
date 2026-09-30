@@ -64,7 +64,7 @@ export function parseTimeInput(v: string): number | null {
   const trimmed = v.trim();
   if (!trimmed) return null;
   const match = trimmed.match(/^(\d{1,2}):([0-5]?\d)$/);
-  if (match) return parseInt(match[1], 10) * 60 + parseInt(match[2], 10);
+  if (match) return parseInt(match[1]!, 10) * 60 + parseInt(match[2]!, 10);
   const num = Number(trimmed);
   if (!isNaN(num) && num >= 0) return Math.round(num);
   return null;
