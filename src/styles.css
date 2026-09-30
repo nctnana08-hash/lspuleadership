@@ -53,7 +53,7 @@ body {
   animation: pulse-gold 2s infinite;
 }
 
-.bg-overlay { background: linear-gradient(180deg, oklch(0.15 0.05 150 / 0.35), oklch(0.15 0.06 150 / 0.75)); }
+.bg-overlay { background: linear-gradient(180deg, oklch(0.14 0.05 150 / 0.72), oklch(0.15 0.06 150 / 0.78)); }
 .glass { background: oklch(0.2 0.05 150 / 0.55); backdrop-filter: blur(10px); border: 1px solid oklch(1 0 0 / 0.15); }
 .striped-title {
   color: var(--color-foreground);
