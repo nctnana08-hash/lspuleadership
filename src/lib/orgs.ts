@@ -53,6 +53,16 @@ export function totalTime(t: Times): number | null {
   return vals.reduce<number>((a, b) => a + (b as number), 0);
 }
 
+export function insertedTotalTime(t: Times): number | null {
+  const vals = Object.values(t).filter((v): v is number => v !== null && v !== undefined);
+  if (vals.length === 0) return null;
+  return vals.reduce<number>((a, b) => a + b, 0);
+}
+
+export function completedStationsCount(t: Times): number {
+  return Object.values(t).filter((v) => v !== null && v !== undefined).length;
+}
+
 export function formatTime(sec: number | null): string {
   if (sec === null) return "—";
   const m = Math.floor(sec / 60);
