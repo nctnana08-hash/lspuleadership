@@ -14,7 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      org_scores: {
+        Row: {
+          collaboration: number | null
+          final_rank: number | null
+          integrity: number | null
+          name: string
+          sort_order: number
+          stewardship: number | null
+          unity: number | null
+          updated_at: string
+        }
+        Insert: {
+          collaboration?: number | null
+          final_rank?: number | null
+          integrity?: number | null
+          name: string
+          sort_order?: number
+          stewardship?: number | null
+          unity?: number | null
+          updated_at?: string
+        }
+        Update: {
+          collaboration?: number | null
+          final_rank?: number | null
+          integrity?: number | null
+          name?: string
+          sort_order?: number
+          stewardship?: number | null
+          unity?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
