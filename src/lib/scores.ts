@@ -59,7 +59,8 @@ export function useScores() {
 }
 
 export async function saveTime(name: string, station: StationKey, value: number | null) {
-  return supabase.from("org_scores").update({ [station]: value, updated_at: new Date().toISOString() }).eq("name", name);
+  const patch = { [station]: value, updated_at: new Date().toISOString() } as Partial<ScoreRow> & { updated_at: string };
+  return supabase.from("org_scores").update(patch).eq("name", name);
 }
 
 export async function saveFinalRank(name: string, rank: number | null, rows: ScoreRow[]) {
