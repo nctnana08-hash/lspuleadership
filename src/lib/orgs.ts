@@ -1,8 +1,9 @@
 export const STATIONS = [
-  { key: "unity", label: "Unity", full: "Ugat — Human Unity Transporter" },
-  { key: "integrity", label: "Integrity", full: "Paninindigan — Krisis sa Kabilang Daan" },
-  { key: "stewardship", label: "Stewardship", full: "Katiwala — Tower of Purpose" },
-  { key: "collaboration", label: "Collaboration", full: "Pagsinag — Tali ng Ugnayan" },
+  { key: "unity1", label: "Unity 1", short: "U1", full: "Ugat — Human Unity Transporter (Stage 1)" },
+  { key: "unity2", label: "Unity 2", short: "U2", full: "Ugat — Human Unity Transporter (Stage 2)" },
+  { key: "integrity", label: "Integrity", short: "Int", full: "Paninindigan — Krisis sa Kabilang Daan" },
+  { key: "stewardship", label: "Stewardship", short: "Stew", full: "Katiwala — Tower of Purpose" },
+  { key: "collaboration", label: "Collaboration", short: "Col", full: "Pagsinag — Tali ng Ugnayan" },
 ] as const;
 
 export type StationKey = (typeof STATIONS)[number]["key"];
@@ -44,7 +45,13 @@ export interface OrgEntry {
 }
 
 export function emptyTimes(): Times {
-  return { unity: null, integrity: null, stewardship: null, collaboration: null };
+  return {
+    unity1: null,
+    unity2: null,
+    integrity: null,
+    stewardship: null,
+    collaboration: null,
+  };
 }
 
 export function totalTime(t: Times): number | null {
@@ -63,8 +70,13 @@ export function completedStationsCount(t: Times): number {
   return Object.values(t).filter((v) => v !== null && v !== undefined).length;
 }
 
+export function unityCombinedTime(t: Times): number | null {
+  if (t.unity1 === null && t.unity2 === null) return null;
+  return (t.unity1 ?? 0) + (t.unity2 ?? 0);
+}
+
 export function formatTime(sec: number | null): string {
-  if (sec === null) return "—";
+  if (sec === null || sec === undefined) return "—";
   const m = Math.floor(sec / 60);
   const s = sec % 60;
   return `${m}:${s.toString().padStart(2, "0")}`;

@@ -59,9 +59,9 @@ function LeaderboardTable({
         <span className="w-6 sm:w-7 text-center shrink-0">#</span>
         <span className="flex-1 min-w-0 px-1.5 sm:px-2">Organization</span>
         {STATIONS.map((s) => (
-          <span key={s.key} className="w-11 sm:w-13 text-center shrink-0" title={s.full}>
-            <span className="hidden xl:inline">{s.label}</span>
-            <span className="xl:hidden">{s.label.slice(0, 3)}</span>
+          <span key={s.key} className="w-10 sm:w-12 text-center shrink-0" title={s.full}>
+            <span className="hidden 2xl:inline">{s.label}</span>
+            <span className="2xl:hidden">{s.short}</span>
           </span>
         ))}
         <span className="w-13 sm:w-16 text-right shrink-0 text-gold font-bold">Total</span>
@@ -84,7 +84,7 @@ function LeaderboardTable({
 
           const overallRank = startIndex + idx + 1;
           const hasScore = e.completedCount > 0;
-          const isComplete = e.completedCount === 4;
+          const isComplete = e.completedCount === 5;
           const isTop4 = isComplete && overallRank <= 4;
 
           return (
@@ -123,14 +123,15 @@ function LeaderboardTable({
                 <span className={cn(isTop4 && "text-gold font-bold")}>{e.name}</span>
               </div>
 
-              {/* Station Scores: Unity, Integrity, Stewardship, Collaboration */}
+              {/* Station Scores: Unity 1, Unity 2, Integrity, Stewardship, Collaboration */}
               {STATIONS.map((s) => (
                 <div
                   key={s.key}
                   className={cn(
-                    "w-11 sm:w-13 shrink-0 text-center font-mono tabular-nums text-[10px] sm:text-[11px]",
+                    "w-10 sm:w-12 shrink-0 text-center font-mono tabular-nums text-[9.5px] sm:text-[10.5px] xl:text-[11px]",
                     e[s.key] !== null ? "font-medium text-foreground" : "text-foreground/30",
                   )}
+                  title={`${s.label}: ${formatTime(e[s.key])}`}
                 >
                   {formatTime(e[s.key])}
                 </div>
@@ -144,7 +145,7 @@ function LeaderboardTable({
                   <span className="font-medium text-foreground/90">
                     {formatTime(e.insertedTotal)}
                     <span className="ml-0.5 text-[8px] sm:text-[9px] text-foreground/50 font-sans">
-                      ({e.completedCount}/4)
+                      ({e.completedCount}/5)
                     </span>
                   </span>
                 ) : (

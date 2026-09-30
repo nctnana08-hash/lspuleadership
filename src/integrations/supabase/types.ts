@@ -23,6 +23,8 @@ export type Database = {
           sort_order: number
           stewardship: number | null
           unity: number | null
+          unity_1?: number | null
+          unity_2?: number | null
           updated_at: string
         }
         Insert: {
@@ -33,6 +35,8 @@ export type Database = {
           sort_order?: number
           stewardship?: number | null
           unity?: number | null
+          unity_1?: number | null
+          unity_2?: number | null
           updated_at?: string
         }
         Update: {
@@ -43,6 +47,8 @@ export type Database = {
           sort_order?: number
           stewardship?: number | null
           unity?: number | null
+          unity_1?: number | null
+          unity_2?: number | null
           updated_at?: string
         }
         Relationships: []
