@@ -52,23 +52,23 @@ export function PagsibolShell({
         />
         <div className="fixed inset-0 -z-10 bg-overlay" aria-hidden />
 
-        {/* Compact Header */}
-        <header className="glass shrink-0 border-b border-foreground/15 px-3 py-1.5 sm:px-5 sm:py-2">
-          <div className="mx-auto flex max-w-[1920px] items-center justify-between gap-3">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <span className="font-display striped-title text-xl tracking-wider text-gold sm:text-2xl">
+        {/* Ultra-compact Header (approx 38px) */}
+        <header className="glass shrink-0 border-b border-foreground/15 px-3 py-1 sm:px-4 sm:py-1.5 z-20">
+          <div className="mx-auto flex w-full max-w-[1920px] items-center justify-between gap-2 sm:gap-3">
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="font-display striped-title text-lg tracking-wider text-gold sm:text-xl">
                 PAGSIBOL
               </span>
-              <span className="rounded bg-gold/20 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-gold sm:text-xs">
+              <span className="rounded bg-gold/25 px-1.5 py-0.5 text-[10px] font-bold text-gold">
                 2026
               </span>
-              <span className="hidden font-display text-xs tracking-wider text-foreground/80 md:inline">
-                LIVE LEADERBOARD
+              <span className="hidden font-display text-[11px] tracking-wider text-foreground/80 xl:inline">
+                LEADERBOARD
               </span>
             </div>
 
             {headerExtra ? (
-              <div className="flex-1 min-w-0 max-w-2xl px-2">{headerExtra}</div>
+              <div className="flex-1 min-w-0 px-2">{headerExtra}</div>
             ) : (
               subtitle && (
                 <p className="hidden text-xs text-foreground/80 lg:block truncate">{subtitle}</p>
@@ -76,6 +76,9 @@ export function PagsibolShell({
             )}
 
             <div className="flex items-center gap-2 shrink-0">
+              <span className="hidden sm:flex items-center gap-1.5 text-[11px] text-foreground/80 font-medium mr-1">
+                <span className="live-dot" /> Live
+              </span>
               <nav className="flex gap-1.5">
                 {[
                   ["/", "Leaderboard"],
@@ -85,7 +88,7 @@ export function PagsibolShell({
                     key={to}
                     to={to as "/" | "/tally"}
                     activeOptions={{ exact: true }}
-                    className="font-display rounded-full border border-foreground/30 px-3 py-1 text-xs uppercase tracking-wider transition-colors hover:bg-foreground/10"
+                    className="font-display rounded-full border border-foreground/30 px-2.5 py-0.5 text-[11px] uppercase tracking-wider transition-colors hover:bg-foreground/10"
                     activeProps={{
                       className: "bg-gold text-gold-foreground border-gold hover:bg-gold",
                     }}
@@ -99,23 +102,10 @@ export function PagsibolShell({
           </div>
         </header>
 
-        {/* Main Content strictly constrained to available viewport height */}
-        <main className="flex-1 min-h-0 w-full max-w-[1920px] mx-auto p-2 sm:p-3 overflow-hidden flex flex-col">
+        {/* Main Content strictly 100% of remaining height, ZERO overflow */}
+        <main className="flex-1 min-h-0 w-full max-w-[1920px] mx-auto p-1.5 sm:p-2 overflow-hidden flex flex-col">
           {children}
         </main>
-
-        {/* Compact Footer */}
-        <footer className="glass shrink-0 border-t border-foreground/10 px-4 py-1 text-[11px] text-foreground/60">
-          <div className="mx-auto flex max-w-[1920px] items-center justify-between">
-            <span className="hidden sm:inline">September 30, 2026 · Lacson Gymnasium</span>
-            <span className="font-medium text-foreground/75">
-              Laguna State Polytechnic University · Supreme Student Council – Los Baños
-            </span>
-            <span className="flex items-center gap-1.5 font-medium text-foreground/80">
-              <span className="live-dot" /> Live Standings
-            </span>
-          </div>
-        </footer>
       </div>
     );
   }
